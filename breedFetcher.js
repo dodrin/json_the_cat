@@ -14,7 +14,7 @@ const fetchBreedDescription = function (breedName, callback) {
       error = "Your request breed does not exist";
       callback(error, null);
     } else {
-      desc = data[0][description];
+      let desc = data[0].description;
       callback(null, desc);
     }
   });
