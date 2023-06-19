@@ -1,0 +1,13 @@
+####
+# Node stuff
+#
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
+node_modules/
+
+# OSX
+.DS_Store
