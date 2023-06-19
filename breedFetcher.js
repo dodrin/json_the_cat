@@ -1,23 +1,23 @@
 const request = require("request");
 
-//takes command line arguments
-const args = process.argv.slice(2);
-const breedToSearch = args[0];
+const fetchBreedDescription = function (breedName, callback) {
 
-const apiUrl = 'https://api.thecatapi.com/v1/breeds/search?q=';
+  const api = "https://api.thecatapi.com/v1/breeds/search?q=";
+  const url = api + breedName;
 
-request(
-  `${apiUrl}${breedToSearch}`,
-  function(error, response, body) {
-    if (error) {
-      console.error(error);
-      return;
-    }
+  request(url, function (error, response, body) {
     const data = JSON.parse(body);
-    if (args[0] === undefined || data[0] === undefined) {
-      console.log("Please enter valid breed");
+    
+    if (error) {
+      callback(error, null);
+    } else if (breedName === undefined || data[0] === undefined) {
+      error = "Your request breed does not exist";
+      callback(error, null);
     } else {
-      console.log(data[0].description);
+      desc = data[0][description];
+      callback(null, desc);
     }
-  }
-);
+  });
+};
+
+module.exports = { fetchBreedDescription };
