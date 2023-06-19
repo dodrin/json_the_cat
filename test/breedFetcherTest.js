@@ -20,7 +20,7 @@ describe("fetchBreedDescription", () => {
   });
 
   it("returns error message for a invalid breed", (done) => {
-    fetchBreedDescription("Potato", (err, desc) => {
+    fetchBreedDescription("Potato", (err) => {
       const errorMsg = "Your request breed does not exist";
       assert.equal(errorMsg, err);
       done();
